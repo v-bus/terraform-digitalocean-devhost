@@ -25,10 +25,18 @@ variable "vps_list" {
 variable "dev_user" {
   description = "postfix in hostname like dev$N-username"
 }
-variable "hcloud_token" {
-  description = "Access token to hcloud API"
+variable "token" {
+  description = "Access token to do API"
+}
+variable "dev_ssh_key" {
+  description = "Name of SSH key"
+  default     = "dev_ssh_key"
 }
 variable "tags" {
-  description = "Tags to VPS. User-defined labels map (key-value pairs)"
-  type        = map(string)
+  description = "Tags to droplet. User-defined tags list of values"
+  type        = list(string)
+}
+variable "region" {
+  description = "Digital Ocean region"
+  default     = "ams3"
 }

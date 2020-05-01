@@ -13,15 +13,15 @@
 example
 
 ```terraform
-module "hdevs" {
+module "devs" {
     source = "github.com/v-bus/terraform-digitalocean-devhost"
     aws_access_key  = "asdfghjhgf"
     aws_secret_key  = "sdfghngfds"
     dns_dev_zone    = "yourname.net."
     vps_list        = {"ubuntu_18" = 2}
     dev_user        = "username"
-    hcloud_token    = "sdfghj,hgffghjkjhgf"
-    tags            = {"key" = "value"}
+    token    = "sdfghj,hgffghjkjhgf"
+    tags            = ["value"]
 }
 
 output "out" {

@@ -1,17 +1,19 @@
 terraform {
   required_version = ">= 0.12"
   required_providers {
-    aws    = "~> 2.54"
-    hcloud = "~> 1.15"
+    aws          = "~> 2.54"
+    digitalocean = "~> 1.17"
   }
 }
 
 module "vps" {
-  source       = "./modules/hcloud"
-  vps_list     = var.vps_list
-  dev_user     = var.dev_user
-  hcloud_token = var.hcloud_token
-  tags         = var.tags
+  source      = "./modules/digitalocean"
+  vps_list    = var.vps_list
+  dev_user    = var.dev_user
+  token       = var.token
+  region      = var.region
+  dev_ssh_key = var.dev_ssh_key
+  tags        = var.tags
 }
 
 module "dns" {
