@@ -20,32 +20,42 @@ variable "dev_user" {
   default     = "username"
 }
 
-variable "hcloud_token" {
-  description = "Access token to hcloud API"
+variable "token" {
+  description = "Access token to do API"
 }
-
+variable "dev_ssh_key" {
+  description = "Name of SSH key"
+  default     = "dev_ssh_key"
+}
 variable "dev_ssh_pub_path" {
   description = "User public SSH RSA file path name"
   default     = "~/.ssh/id_rsa.pub"
 }
 
 variable "server_image" {
-  description = "Hcloud image collection"
+  description = "do image collection"
   default = {
-    "ubuntu_16" = "ubuntu-16.04"
-    "debian_9"  = "debian-9"
-    "centos_7"  = "centos-7"
-    "ubuntu_18" = "ubuntu-18.04"
-    "debian_10" = "debian-10"
-    "centos_8"  = "centos-8"
-    "fedora_31" = "fedora-31"
+    "ubuntu_16" = "ubuntu-16-04-x64"
+    "debian_9"  = "debian-9-x64"
+    "centos_7"  = "centos-7-x64"
+    "ubuntu_18" = "ubuntu-18-04-x64"
+    "ubuntu_19" = "ubuntu-19-10-x64"
+    "ubuntu_20" = "ubuntu-20-04-x64"
+    "debian_10" = "debian-10-x64"
+    "centos_8"  = "centos-8-x64"
+    "fedora_31" = "fedora-31-x64"
+    "fedora_32" = "fedora-32-x64"
   }
 }
 variable "server_type" {
-  description = "hcloud server type"
-  default     = "cx11"
+  description = "do size"
+  default     = "s-1vcpu-1gb"
+}
+variable "region" {
+  description = "Digital Ocean region"
+  default     = "ams3"
 }
 variable "tags" {
-  description = "Tags to VPS. User-defined labels map (key-value pairs)"
-  type        = map(string)
+  description = "Tags to droplet. User-defined tags list of values"
+  type        = list(string)
 }

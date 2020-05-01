@@ -1,8 +1,14 @@
+terraform {
+  required_version = ">= 0.12"
+  required_providers {
+    digitalocean = "~> 1.17"
+  }
+}
 ####################################
-# Configure the Hetzner Cloud Provider
+# Configure the Digital Ocean Provider
 ##########################
-provider "hcloud" {
-  token = var.hcloud_token
+provider "digitalocean" {
+  token = var.token
 }
 locals {
   devs = flatten([
@@ -18,24 +24,20 @@ locals {
     ]
   ])
 }
-data "hcloud_image" "dev_image" {
-  count       = length(var.vps_list)
-  name        = var.server_image[keys(var.vps_list)[count.index]]
-  most_recent = true
-}
 
-resource "hcloud_ssh_key" "dev_ssh_key" {
-  name       = "dev_ssh"
+resource "digitalocean_ssh_key" "dev_ssh_key" {
+  name       = var.dev_ssh_key
   public_key = file(var.dev_ssh_pub_path)
 }
 
-resource "hcloud_server" "dev_vps" {
-  count       = length(local.devs)
-  name        = local.devs[count.index]["hostname"]
-  image       = var.server_image[local.devs[count.index]["os"]]
-  server_type = var.server_type
+resource "digitalocean_droplet" "dev_vps" {
+  count  = length(local.devs)
+  name   = local.devs[count.index]["hostname"]
+  image  = var.server_image[local.devs[count.index]["os"]]
+  size   = var.server_type
+  region = var.region
   ssh_keys = [
-    hcloud_ssh_key.dev_ssh_key.id
+    digitalocean_ssh_key.dev_ssh_key.id
   ]
-  labels = var.tags
+  tags = var.tags
 }

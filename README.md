@@ -1,4 +1,4 @@
-# terraform-hcloud-devhost
+# terraform-digitalocean-devhost
 
 ## quickstart
 
@@ -14,7 +14,7 @@ example
 
 ```terraform
 module "hdevs" {
-    source = "github.com/v-bus/terraform-hcloud-devhost"
+    source = "github.com/v-bus/terraform-digitalocean-devhost"
     aws_access_key  = "asdfghjhgf"
     aws_secret_key  = "sdfghngfds"
     dns_dev_zone    = "yourname.net."
