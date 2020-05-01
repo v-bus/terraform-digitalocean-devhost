@@ -2,7 +2,7 @@
 
 ## quickstart
 
-1. install Terraform (see [project.tf](project.tf) to check required versions)
+1. install Terraform (see [main.tf](main.tf) to check required versions)
 1. `git clone` this module
 1. set required variables in .tfvars file (see [variables.tf](variables.tf) file, required variables labeled as required)
 1. run `terraform init`
