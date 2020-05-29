@@ -7,13 +7,14 @@ terraform {
 }
 
 module "vps" {
-  source      = "./modules/digitalocean"
-  vps_list    = var.vps_list
-  dev_user    = var.dev_user
-  token       = var.token
-  region      = var.region
-  dev_ssh_key = var.dev_ssh_key
-  tags        = var.tags
+  source           = "./modules/digitalocean"
+  vps_list         = var.vps_list
+  dev_user         = var.dev_user
+  token            = var.token
+  region           = var.region
+  dev_ssh_key      = var.dev_ssh_key
+  tags             = var.tags
+  opt_ssh_key_name = var.opt_ssh_key_name
 }
 
 module "dns" {

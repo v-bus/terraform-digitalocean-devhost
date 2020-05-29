@@ -31,7 +31,11 @@ variable "dev_ssh_pub_path" {
   description = "User public SSH RSA file path name"
   default     = "~/.ssh/id_rsa.pub"
 }
-
+variable "opt_ssh_key_name" {
+  description = "Predefined SSH Key, ex. team key"
+  default     = null
+  type        = string
+}
 variable "server_image" {
   description = "do image collection"
   default = {

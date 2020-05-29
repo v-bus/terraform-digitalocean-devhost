@@ -32,6 +32,11 @@ variable "dev_ssh_key" {
   description = "Name of SSH key"
   default     = "dev_ssh_key"
 }
+variable "opt_ssh_key_name" {
+  description = "Predefined SSH Key, ex. team key"
+  default     = null
+  type        = string
+}
 variable "tags" {
   description = "Tags to droplet. User-defined tags list of values"
   type        = list(string)
