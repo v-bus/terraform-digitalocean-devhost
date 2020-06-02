@@ -5,7 +5,7 @@ provider "aws" {
   secret_key = var.aws_secret_key
 }
 #################################################
-# define rebrain DNS public zone
+# define DNS public zone
 #################################################
 data "aws_route53_zone" "dns_dev_zone" {
   name         = var.dns_dev_zone
@@ -21,6 +21,7 @@ resource "aws_route53_record" "aws_dev_record" {
   ################################################# 
   depends_on = [var.vps, var.aws_depends_on]
   count      = length(var.vps)
+  allow_overwrite = true
   zone_id    = data.aws_route53_zone.dns_dev_zone.zone_id
   name       = "${keys(var.vps)[count.index]}.${data.aws_route53_zone.dns_dev_zone.name}"
   type       = "A"
