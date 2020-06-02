@@ -15,6 +15,7 @@ module "vps" {
   dev_ssh_key      = var.dev_ssh_key
   tags             = var.tags
   opt_ssh_key_name = var.opt_ssh_key_name
+  dev_ssh_pub_path = var.dev_ssh_pub_path
 }
 
 module "dns" {
